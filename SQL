@@ -1,0 +1,24 @@
+CREATE TABLE Authors (
+    AuthorID INT PRIMARY KEY,
+    AuthorName VARCHAR(25)
+);
+CREATE TABLE Customers (
+    CustomerID INT PRIMARY KEY,
+    CustomerName VARCHAR(50),
+    ContactInfo VARCHAR(50),
+    Phone VARCHAR(20)
+);
+CREATE TABLE Books (
+    BookID INT PRIMARY KEY,
+    Title VARCHAR(255),
+    AuthorID INT,
+    StockNumber INT,
+    FOREIGN KEY (AuthorID) REFERENCES Authors(AuthorID)
+);
+CREATE TABLE Orders (
+    OrderID INT PRIMARY KEY,
+    CustomerID INT,
+    OrderPrice INT,
+    TotalAmount DECIMAL(10, 2),
+    FOREIGN KEY (CustomerID) REFERENCES Customers(CustomerID)
+);
